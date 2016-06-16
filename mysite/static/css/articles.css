@@ -1,0 +1,27 @@
+#pager{
+	text-align: center;
+	list-style: none;
+	display: block;
+	margin: 20px auto;
+}
+
+#pager li{
+	display: inline-block;
+	font-size: 14px;
+}
+
+#pager li a{
+	display: block;
+	line-height: 24px;
+	color: #182230;
+	text-decoration: none;
+}
+
+#pager li a:hover{
+	color: #283A52;
+	text-decoration: underline;
+}
+
+#pager li a:target{
+	text-decoration: underline;
+}

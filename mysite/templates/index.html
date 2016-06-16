@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+	
+{% block mycss %}
+<link rel="stylesheet" href="/static/css/index.css">
+{% endblock %}
+{% block title %}
+August1996's blog
+{% endblock %}
+{% block content %}
+	{% if article_list %}
+		{% for article in article_list %}
+			<article title="{{ article.title }}" class="post">
+				<h3><a href="/article/{{ article.id }}">{{ article.title }}</a></h3>
+				<img src="{{ article.user.avatar }}" alt='头像'>
+				<a href="#">{{ article.user }}</a>
+				<span>on</span>
+					{% for tag in article.tags.all %}
+						<a href="/tag/{{ tag.id }}/1">{{ tag }}</a>
+					{% endfor %}
+				<time datetime="{{ article.publish_time }}" pubdate="pubdate">{{ article.publish_time }}</time>
+				<div class="con"><p>{{ article.content |safe }}</p></div>
+			</article>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

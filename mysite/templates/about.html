@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>About me</title>
+	<link rel="stylesheet" href="/static/css/about.css">
+	<script type="text/javascript" src="/static/js/jquery-2.1.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#tcode>img").mousemove(function(){
+				$("#tcode>img").css({'width':'128px'});
+			}).mouseleave(function(){
+				$("#tcode>img").css({'width':'100px'});
+			});
+			$("#over").addClass("over");
+			$("#con").addClass("con");
+			$("#tcode").addClass("tcode");
+			$("h4").addClass("h4");
+			$("h5").addClass("h5");
+			$("h6").addClass("h6");
+		});
+	</script>
+</head>
+<body>
+	<div id="stage">
+	</div>
+	<div id="over">
+	</div>
+	<div id="con">
+		<div>
+			<h4>我叫余健彬</h4>
+			<h5>我的ID是August1996,我出生在1996年的8月.</h5>
+			<h6>别人问我为什么可以不厌其烦地敲代码.而我会自然地说这是我的兴趣.</h6>
+			<h6>当然,我也希望在大学多学点东西,好能够让我以后看起来不那么挫.</h6>
+		</div>
+		<div id="tcode">
+			<img src="/static/media/tcode.png" alt="">
+		</div>
+		<div id="site">
+			<p><a href="http://127.0.0.1:8000">我的博客</a></p>
+		</div>
+	</div>
+</body>
+</html>

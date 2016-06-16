@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block mycss %}
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/articles.css">
+{% endblock %}
+{% block title %}
+分类:{{ categoryname }}
+{% endblock %}
+{% block content %}
+	<h3 style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px;font-size: 18px;font-weight: 800;color: #3A3A3A;">分类:{{ categoryname }}</h3>
+	{% if article_list %}
+		{% for article in article_list %}
+			<article title="{{ article.title }}" class="post">
+				<h3><a href="/article/{{ article.id }}">{{ article.title }}</a></h3>
+				<img src="/{{ article.user.avatar }}" alt='头像'>
+				<a href="#">{{ article.user }}</a>
+				<span>on</span>
+					{% for tag in article.tags.all %}
+						<a href="/tag/{{ tag.id }}/1">{{ tag }}</a>
+					{% endfor %}
+				<time datetime="{{ article.publish_time }}" pubdate="pubdate">{{ article.publish_time }}</time>
+				<div class="con"><p>{{ article.content |safe }}</p></div>
+			</article>
+		{% endfor %}
+	{% endif %}
+	<ul id="pager">
+		{% if  cnt_page > 1  %}
+			<li><a href="/category/{{ categoryid }}/{{ cnt_page|add:-1 }}">&lt;&lt;</a></li>
+		{% endif %}
+		{% for page in total_page %}
+			<li><a href="/category/{{ categoryid }}/{{ forloop.counter }}/" {% if cnt_page == forloop.counter %}style="color:#0E1011;font-weight: 900;text-decoration: underline;font-size: 120%" {% endif %}>{{ forloop.counter }}</a></li>
+		{% endfor %}
+		{% if cnt_page < total_page|length %}
+			<li><a href="/category/{{ categoryid }}/{{ cnt_page|add:1 }}">&gt;&gt;</a></li>
+		{% endif %}
+	</ul>
+{% endblock %}

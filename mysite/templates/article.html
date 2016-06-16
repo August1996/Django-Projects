@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block mycss %}
+<link rel="stylesheet" href="/static/css/article.css">
+{% endblock %}
+
+{% block title %}
+{{ article.title }}
+{% endblock %}
+
+{% block content %}
+	{% if article %}
+		<article title="{{ article.title }}" id="post">
+			<h3><a href="/article/{{ article.id }}">{{ article.title }}</a></h3>
+			<time datetime="{{ article.publish_time }}" pubdate="pubdate">{{ article.publish_time }}</time>
+			<span>on</span>
+			{% for tag in article.tags.all %}
+				<a href="/tag/{{ tag.id }}/1">{{ tag }}</a>
+			{% endfor %}
+			<div id="con"><p>{{ article.content |safe }}</p></div>
+		</article>
+		<img src="/{{ article.user.avatar }}" alt='头像'>
+		<hr>
+		<a href="#">{{ article.user }}</a>
+		<p>{{ article.user.intro }}</p>
+		<p id="site"><a href="{{ article.user.url }}">{{ article.user.url }}</a></p>
+	{% endif %}
+{% endblock %}

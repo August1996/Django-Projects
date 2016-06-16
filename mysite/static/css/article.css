@@ -1,0 +1,118 @@
+#container #left{
+	margin-top: 20px;
+	background-color: #fff;
+}
+
+#post{
+	margin-top: 12px;
+	padding: 20px;
+	display: block;
+	width: 640px;
+}
+
+#post h3 a{
+	color: #000;
+	font-size: 24px;
+	font-weight: 900;
+	text-decoration: none;
+}
+
+#post h3 a:hover{
+	color: #4B4B4B;
+}
+
+#post+img{
+	border-radius: 100%;
+	width: 64px;
+	margin-left: 5px;
+	display: block;
+	margin: auto;
+	margin-top: 20px;
+	z-index: 98;
+}
+
+#con img{
+	max-width: 640px;
+	height: auto;
+}
+
+img+hr{
+	width: 95%;
+	margin: auto;
+	margin-top: -32px;
+	opacity: .10;
+	z-index: 99;
+}
+
+hr+a{
+	display: block;
+	margin-top: 40px;
+	margin-left: 64px;
+	font-size: 16px;
+	color: #383838;
+	text-decoration: none;
+	font-weight: 800;
+}
+
+
+hr+a:hover{
+	color: #12B6BA;
+	text-decoration: underline;
+}
+
+a+p{
+	margin-top: 10px;
+	margin-left: 64px;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+#post a{
+	font-size: 12px;
+	color: #12B6BA;
+	text-decoration: none;
+}
+
+#post>a:hover{
+	font-size: 12px;
+	color: #919191;
+	text-decoration: underline;
+}
+
+#post time,#post span{
+	font-size: 14px;
+	color: #000;
+	padding: 3px;
+}
+
+#con{
+	margin-top: 10px;
+	padding: 5px;
+	overflow: hidden;
+}
+
+hr+a+p{
+	font-size: 12px;
+	float: right;
+	line-height: 24px;
+	margin-top: 10px;
+	margin-right: 24px;
+}
+
+#site{
+	text-align: center;
+	clear: both;
+}
+
+#site a{
+	margin: auto;
+	display: inline-block;
+	line-height: 24px;
+	text-decoration: none;
+	color: #8C9BA4;
+	font-size: 14px;
+}
+
+#site a:hover{
+	text-decoration: underline;
+	color: #7A878E;
+}
