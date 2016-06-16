@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style type="text/css">
+        #header,#footer{
+            margin:auto auto;
+            background-color: cadetblue;
+            height: 80px;
+            width: 78%;
+            line-height: 80px;
+            text-align: center;
+        }
+        #footer{
+            color: #ffffff;
+        }
+        #container{
+            margin:auto auto;
+            width: 78%;
+            background-color: aquamarine;
+        }
+        #nav p{
+            display: inline-block;
+            float: right;
+            font-size: 14px;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+        #nav p a{
+            color: darkcyan;
+            text-decoration: none;
+        }
+        #nav p a:hover{
+            color: chocolate;
+            text-decoration: underline;
+        }
+
+        </style>
+        {% block mycss%}{% endblock %}
+</head>
+<body>
+    <div id="header"><h1>欢迎来到我的相册!</h1></div>
+    <div id="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div id="footer"><h1>这里是我的相册,请随便参观.</h1></div>
+</body>
+</html>

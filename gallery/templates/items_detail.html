@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block mycss %}
+    <style>
+        #items{
+            list-style-type: none;
+            display: block;
+            width: 100%;
+        }
+        #items li{
+            display: inline-block;
+            margin-top:20px;
+            margin-left:20px;
+            margin-bottom: 8px;
+        }
+        #items li img {
+            display: block;
+        }
+        #items li span{
+            display: block;
+            text-align: center;
+            margin-top:8px;
+        }
+        #items li a{
+            margin-top:8px;
+            font-size: 14px;
+            text-decoration: none;
+            color: darkred;
+        }
+        #items li a:hover{
+            text-decoration: underline;
+            color: red;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    相册详情:{{ object.name }}
+{% endblock %}
+
+{% block content %}
+    <nav id="nav">
+        <p><a href="{% url 'items_list' %}">&laquo; 返回</a></p>
+        <p><a href="{% url 'index' %}">&laquo; 首页</a></p>
+    </nav>
+    <div id="desc"><p>{{ object.name }}:</p><p>{{ object.desc }}</p></div>
+    <hr>
+    <div id="images">
+        <ul id="items">
+            {% if object.photo_set.all %}
+                {% for image in object.photo_set.all %}
+                    <li><a href="{{ image.get_absolute_url }}"><img src="{{ image.photo.thumb_url }}"><span>{{ image.title }}</span></a></li>
+                {% endfor %}
+            {% else %}
+                <h1 style="line-height: 180px;text-align: center;color: chocolate;">还没有添加照片哦!</h1>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    首页
+{% endblock %}
+{% block mycss %}
+    <style>
+        #items{
+            list-style-type: none;
+            display: block;
+            width: 100%;
+        }
+        #items li{
+            display: inline-block;
+            margin-top:20px;
+            margin-left:20px;
+            margin-bottom: 8px;
+        }
+        #items li img {
+            display: block;
+            width: 128px;
+        }
+        #items li span{
+            display: block;
+            text-align: center;
+            margin-top:8px;
+        }
+        #items li a,#view_all{
+            margin-top:8px;
+            font-size: 14px;
+            text-decoration: none;
+            color: darkred;
+        }
+        #items li a:hover,#view_all a:hover{
+            text-decoration: underline;
+            color: red;
+        }
+        #view_all{
+            text-align: center;
+            padding-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    {% if object_list %}
+        <ul id="items">
+        {% for object in object_list %}
+                <li><a href="{{ object.get_absolute_url }}"><img src="
+                {% if  object.photo_set.all.0.photo  %}
+                {{ object.photo_set.all.0.photo }}
+                {% else %}
+                /uploads/default.png
+                {% endif %}
+                " /><span>{{ object.name }}</span></a></li>
+        {% endfor %}
+        </ul>
+        <p id="view_all"><a href="list">查看全部</a></p>
+    {% else %}
+        <h1 style="line-height: 180px;text-align: center;color: chocolate;">还没有添加相册条目哦!</h1>
+    {% endif %}
+{% endblock %}

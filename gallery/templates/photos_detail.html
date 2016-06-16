@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+    相片详情:{{ object }}
+{% endblock %}
+
+{% block mycss %}
+    <style>
+        #image{
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="nav">
+        <p><a href="{% url 'items_detail' pk=object.item.id %}">&laquo; 返回</a></p>
+        <p><a href="{% url 'index' %}">&laquo; 首页</a></p>
+    </div>
+    <img id="image" src="/{{ object.photo }}">
+
+{% endblock %}
