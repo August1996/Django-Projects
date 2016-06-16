@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta property="wb:webmaster" content="449a90c4da38901e" />
+    <link rel="stylesheet" href="/custom/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/custom/css/index.css"/>
+    <script src="/custom/js/jquery.js"></script>
+    <script src="/custom/js/bootstrap.js"></script>
+    <title>AKEP-All Know Express Love-表白墙</title>
+    <script>
+         function navToggle(){
+                $("#nav").fadeToggle();
+         }
+        function update(){
+                var begin = $("#content").children()[0].id;
+                 if(begin == -1)
+                    begin = 0;
+                 else begin = begin - 0 + 1;
+                 $.ajax({
+                     type:'POST',
+                     url:"/update/"+begin+"/",
+                     dataType:'json',
+                     data:"",
+                     success:function(data){
+                         var kwdata = eval("("+data.responseText.split("Spliter")[0]+")");
+                         var new_count = kwdata.length;
+                         var old_count = $(".media").length;
+                         for(var i = new_count-1;i >= 0;i--) {
+                             if(begin==0)
+                                 $(".media")[0].remove();
+                             if (old_count >= 20) {
+                                 $(".media")[old_count - 1].remove();
+                             }
+                             var expression = '<div style=\"display: none;\" class="media" id="' + kwdata[i]['pk'] + '"><div class="media-body"><h5 class="media-heading"><span class="text-right center-block time" >At ' + kwdata[i]['pub_time'] + '</span>From<span class="from">'  + kwdata[i]["fromwhom"] + '</span> To <span class="to"><a href="/person/' + kwdata[i]['towhom']+'">' + kwdata[i]["towhom"] + '</a></span></h5><p>' + kwdata[i]["text"] + '</p></div></div>';
+
+                             $("#content").prepend(expression);
+                             $(".media[id=\"" + kwdata[i].pk +"\"]").fadeIn();
+                             $("#ep").removeAttr("disabled");
+                        }
+
+                     },
+                     error:function(data){
+                         var kwdata = eval("("+data.responseText.split("Spliter")[0]+")");
+                         var new_count = kwdata.length;
+                         var old_count = $(".media").length;
+                         for(var i = new_count-1;i >= 0;i--) {
+                             if(begin==0)
+                                 $(".media:first-child").remove();
+                             if (old_count >= 20) {
+                                 $(".media:last-child").remove();
+                             }
+                             var expression = '<div style=\"display: none;\" class="media" id="' + kwdata[i]['pk'] + '"><div class="media-body"><h5 class="media-heading"><span class="text-right center-block time" >At ' + kwdata[i]['pub_time'] + '</span>From<span class="from">'  + kwdata[i]["fromwhom"] + '</span> To <span class="to"><a href="/person/' + kwdata[i]['towhom']+'">' + kwdata[i]["towhom"] + '</a></span></h5><p>' + kwdata[i]["text"] + '</p></div></div>';
+
+                             $("#content").prepend(expression);
+                             $(".media[id=\"" + kwdata[i].pk +"\"]").fadeIn();
+                             $("#ep").removeAttr("disabled");
+                        }
+                     },
+                 });
+            }
+         $(document).ready(function(){
+             setInterval(update,8000);
+             $("#ep").click(function(){
+                 $("#ep").attr({"disabled":"disabled"});
+                 if($('*[name="text"]').val()=="") {
+                     var texts = [
+                             '缘是美丽的邂逅，爱是心跳的感觉，情是心灵的交会，恋是甜蜜的思念，走在爱与被爱的边缘，你见或者不见，爱你的心始终不改变！',
+                             '你不开心的时候，我陪你，你哭泣的时候，我陪你，你心情很不爽的时候，我陪你，你不想回家的时候，我陪你，无论怎样，我都陪你，只因为你是我最爱的人，你就是我的音乐，你给我带来好听的音符。你是我的全部，你给我生命带来了色彩。我永远爱你！可以跟我在一起吗？',
+                             '当你开心的时候，我也会不知不觉笑出来；当你难过的时候，我的心比你更痛苦。我很喜欢你笑的样子，真希望自己能够永远珍藏你的笑容。请你嫁给我吧，我一定会让你永远幸福快乐！',
+                             '亲爱的，我已病入膏肓，因为不知道怎么了，我的眼睛里只能看到你的身影，耳朵里只能听得到你的声音，脑海里只有你的记忆，心中塞满了你的名字，而这“绝症”的解药，恐怕只有你天天陪在我身边！',
+                             '佛说：前世五百次回眸，才能换来今生的擦肩而过。如果真是如此，那我愿意用下辈子，下下辈子，下下下辈子的时间，再次换来与你相遇、相知、相爱！',
+                             '一起走吧，一只手是拿不动行李的，从现在开始，我是你的左手。',
+                             '言语无法表达我对你的爱，只有一句“我爱你”，心情无法表达我有多念你，只有一句“我想你”，感觉无法表达你在我心目中的地位，只有一句“你就是我的唯一”。',
+                             '想拥着你，距离不允许；想陪着你，时间不允许；想听着你，工作不允许；想捧着你，身体不允许；唯有心底想念着你，信息祝福着你，情人节希望与你一同度过！',
+                             '无论你在何时，无论你在何处，无论你做什么；请记住：我永远支持你，无时无刻不着你，因为你是我最爱的人！',
+                             '当你开心的时候，我也会不知不觉笑出来；当你难过的时候，我的心比你更痛苦。我很喜欢你笑的样子，真希望自己能够永远珍藏你的笑容。请你嫁给我吧，我一定会让你永远幸福快乐！',
+                             '我厚实的肩膀，仅给你疲惫的依靠。',
+                             '昨天，你可以拒绝我的表白，但我会等到你愿意爱的明天，不管有没有那么一天。',
+                             '我陪你，只要你愿意，不管什么时候，我都会在你身边，因为我爱你，想和你在一起。',
+                             '你若接受我将是世界最幸福的人，你若拒绝我将是世界最痛苦的人。',
+                             '你在现实中拒绝我的时候，我多希望是在做梦，你在梦里接受我的时候，我多希望那是现实。',
+                             '我希望，你是我此生，这份爱情故事里的主角。',
+                             '你的身上是我爱情的另一半，我用上半生去找你，你可愿意陪我走过下半生。',
+                             '执笔为情，落纸写你，人生浮华，岁月依托，执你一念，倾世永远。',
+                             '我想陪你看日升直到月落，从春夏直至秋冬。',
+                             '我想和你有一句心照不宣的约定，吵闹不分离，一生在一起。',
+                             '只要你敢说一句一生的承诺，我便敢用一世去等你。',
+                             '我们那些时常意外的邂逅，皆是我有意的安排。',
+                             '我不想错失原本可以在一起的机遇，不想许多年之后，回想起今天，因为没有表白而不知你是否也爱而遗憾，我不想因今天的软弱，而成为明日忧伤的理由，所以我想跟你说，我爱你，不管你是否愿意，我都将让你明白我的心意。',
+                             '在别人的眼里或许我没有那么好，但在你的面前我却是最好，我最好的只能给我最爱的。',
+                             '关于你的信息，时刻决定着我的心情。',
+                             '你喜欢什么样的人，我就会成为什么样的人。'
+                     ];
+                     $('*[name="text"]').val(texts[Math.floor(Math.random()*texts.length)]);
+                 }
+                 var data = $("#nav").serialize();
+                 $('*[name="text"]').val('');
+                 $('#ep').popover('hide');
+                 $.ajax({
+                     url:'/ep/',
+                     type:'POST',
+                     dataType:'json',
+                     data:data,
+                     success:function(data){
+                     },
+                     error:function(data){
+                         var kwdata = eval("("+data.responseText.split("Spliter")[0]+")");
+                         if(kwdata.state == 'error'){
+                             $('#ep').attr("data-content","失败了是你的问题?");
+                         }else{
+                             update();
+                             $('*[name="text"]').val('');
+                             $('#ep').attr("data-content","哟!表白了哦!") ;
+                         }
+                         $("#ep").removeAttr("disabled");
+                         $('#ep').popover('show');
+                     },
+                 });
+                setTimeout(function(){
+                    $('#ep').popover('hide');
+                },3000);
+             });
+             $("#tobeButton").click(function(){
+                 var url = window.location.href + "person/" + $("#tobeName").val();
+                 window.location = url;
+             });
+             $(".from").click(function(e){
+                 $("*[name='towhom']").val(e.currentTarget.childNodes[0].data);
+                 $("#nav").show();
+             });
+         });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <h2>All Know Express Love</h2>
+        </div>
+        <div id="content">
+            {% if exps  %}
+                {% for exp in exps %}
+                     <div class="media" id="{{ exp.id }}">
+                        <div class="media-body">
+                            <h5 class="media-heading">
+                                <span class="text-right center-block time" >At {{ exp.pub_time | date:" Y-m-d H:i:s" }}</span>
+                                From
+                                <span class="from">{{ exp.fromwhom }}</span>
+                                To
+                                <span class="to"><a href="/person/{{ exp.towhom }}">{{ exp.towhom }}</a></span>
+                            </h5>
+
+                            <p>{{ exp.text }}</p>
+
+                        </div>
+                        {% if exp.img %}
+                            <div class="media-right">
+                                <img src="/{{ exp.image }}" alt="" class="media-object">
+                            </div>
+                        {% endif %}
+                     </div>
+                {% endfor %}
+            {% else %}
+                 <div class="media" id="-1">
+                    <div class="media-body">
+                        <h5 class="media-heading"><span class="to">暂时没有表白哦!</span></h5>
+                        <p>空</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="navbar navbar-fixed-bottom text-right navbar-btn">
+        <button class="btn btn-success" data-toggle="nav" data-target="#nav" onclick="navToggle();" id="shownav">我也来试试</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#tobeModal">我要变身</button>
+        <a class="btn btn-success" href="/rank">Rank</a>
+    </div>
+    <form class="navbar navbar-default navbar-fixed-bottom in" id="nav" style="display: none;">
+        <span class="close" data-dismiss="nav" onclick="navToggle()">&times;</span>
+        <div class="clearfix"></div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="你的名字" name="fromwhom"/>
+            <span class="input-group-addon">To</span>
+            <input type="text" class="form-control" placeholder="Ta的名字" name="towhom"/>
+        </div>
+        <div class="input-group">
+            <input type="text" class="form-control pull-left" placeholder="你想对Ta说什么?想不到?那就空着吧,系统替你自动表白^_^" maxlength="140" name="text"/>
+            <span class="input-group-addon" style="padding: 0;"><button type="button" class="btn btn-default pull-right" id="ep">EP</button></span>
+        </div>
+    </form>
+    <div class="modal fade in" id="tobeModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="text-muted">请输入需要变身的名字</span>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group ">
+                        <input class="form-control" type="text" id="tobeName" name="tobeName" placeholder="这里输入名字"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="tobeButton">变身</button>
+                    <button class="btn btn-warning" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" >
+var jiathis_config={
+    siteNum:7,
+    sm:"qzone,tsina,weixin,renren,cqq,tieba,hi",
+    url:"http://akep.sinaapp.com",
+    summary:"快来看看谁给你表白了^_^.哈哈平安夜,圣诞节都要来了.暗恋OR明恋???然并卵,快来表白吧,让Ta听到你大声说出我爱你.",
+    title:"AKEP表白墙,叮咚...你收到一个表白. #表白#",
+    boldNum:3,
+    pic:"http://1.akep.sinaapp.com/custom/images/together.jpg",
+    showClose:true,
+    shortUrl:true,
+    hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r.gif&move=1" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta property="wb:webmaster" content="449a90c4da38901e" />
+    <link rel="stylesheet" href="/custom/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/custom/css/rank.css"/>
+    <script src="/custom/js/jquery.js"></script>
+    <script src="/custom/js/bootstrap.js"></script>
+    <title>AKEP - Top20</title>
+</head>
+<body>
+    <div class="container">
+         <div class="stage">
+            <table class="table text-center">
+                <tr><th class="text-center">Who</th><th class="text-center">被at次数</th></tr>
+                {% for top in top20 %}
+                    <tr><td><a href="/person/{{ top.name }}">{{ top.name }}</a></td><td><span>{{ top.numb }}</span></td></tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="navbar navbar-fixed-bottom text-right navbar-btn">
+        <a class="btn btn-success" href="/">Home</a>
+    </div>
+</body>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" >
+var jiathis_config={
+    siteNum:7,
+    sm:"qzone,tsina,weixin,renren,cqq,tieba,hi",
+    url:"http://akep.sinaapp.com",
+    summary:"快来看看谁给你表白了^_^.哈哈平安夜,圣诞节都要来了.暗恋OR明恋???然并卵,快来表白吧,让Ta听到你大声说出我爱你.",
+    title:"AKEP表白墙,叮咚...你收到一个表白. #表白#",
+    boldNum:3,
+    pic:"http://1.akep.sinaapp.com/custom/images/together.jpg",
+    showClose:true,
+    shortUrl:true,
+    hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r.gif&move=1" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+</html>

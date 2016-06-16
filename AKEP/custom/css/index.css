@@ -1,0 +1,94 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    overflow:auto;
+}
+body{
+    background-image:url(/custom/images/bgm.gif);
+    background-color: rgba(197, 142, 101, 0.71);
+    position: fixed;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-origin:content;
+    background-position:50% 100%;
+    background-repeat: repeat;
+}
+
+#content{
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #ffffff;
+}
+.input-group{
+    width: 64%;
+    text-align: center;
+    margin: auto;
+}
+.to a,.from{
+    margin: auto 3px;
+    color: rgba(246, 255, 219, 0.91);
+    font-size: 13px;
+    cursor: pointer;
+}
+.from:hover{
+    text-decoration: underline;
+}
+
+.media-heading{
+    background-color: rgba(153, 154, 149, 0.1);
+    padding: 5px;
+    border-radius: 10px;
+}
+.media-body{
+    background-color: rgba(174, 30, 0, 0.1);
+    border-radius: 10px;
+}
+.media-body:hover{
+    background-color: rgba(153, 154, 149, 0);
+    transition: all 0.8s;
+}
+.media-body p{
+    padding: 5px;
+    word-break: break-all;
+}
+.time{
+    color: rgb(246, 255, 219);
+    font-size: 12px;
+}
+.navbar-btn{
+    right: 10px;
+    margin-right:10px;
+}
+.close{
+    right: 20px;
+    margin-right:20px;
+}
+.navbar>*:hover{
+    transition: all 1s;
+}
+.rbtn{
+    width: 100px;
+}
+.mybr{
+    display:none;
+}
+.container {
+    width: 64%;
+}
+@media all and (max-width: 767px){
+    .container {
+        width: 100%;
+        left:0px;
+        margin-left:0px;
+    }
+    .stage{
+        background-color: rgba(255, 0, 0, 0);
+    }
+}
+@media all and (min-width: 768px){
+    body{
+        
+        background-image: url(/custom/images/bg.jpg);
+    }
+}
